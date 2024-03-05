@@ -23,25 +23,40 @@ class Brewery:
         return f"ID: {self.id}\nName: {self.name}\nType: {self.brewery_type}\nAddress: {self.address_1}, {self.city}, {self.state_province}, {self.postal_code}\nCountry: {self.country}\nLongitude: {self.longitude}\nLatitude: {self.latitude}\nPhone: {self.phone}\nWebsite: {self.website_url}\n"
 
 
-def main():
-    url = "https://api.openbrewerydb.org/v1/breweries/random"
+def main(city=None):
 
+    params = {}
     breweries_list = []
-    for i in range(0,20):
+
+    if city:
+        url = "https://api.openbrewerydb.org/v1/breweries?by_city={city}"
+    else:
+        url = "https://api.openbrewerydb.org/v1/breweries?per_page=20"
+
+
+
+    if city:
+        response = requests.get(url, params=city)
+    else:
         response = requests.get(url)
-        if response.status_code == 200:
-            breweries_data = response.json()
-            data_list = [Brewery(data) for data in breweries_data]
+    if response.status_code == 200:
+        breweries_data = response.json()
+        data_list = [Brewery(data) for data in breweries_data]
 
-            breweries_list.append(data_list)
+        breweries_list.append(data_list)
 
 
-        else:
-            print("Nie udało się pobrać danych z API.")
+    else:
+        print("Nie udało się pobrać danych z API.")
+
     for brewery in breweries_list:
         for data in data_list:
             print(data)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description='Fetch breweries from Open Brewery DB API')
+    parser.add_argument('--city', default=None)
+    args = parser.parse_args()
+
+    main(args.city)
