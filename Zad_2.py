@@ -8,4 +8,5 @@ def funcB(numbers):
     changed_numbers = [int(number)*2 for number in numbers]
     print(changed_numbers)
 
+
 funcB(["1", "2", "3", "5", "10"])

@@ -1,7 +1,3 @@
-
-
-
-
 def funcA(names):
     if len(names) != 5:
         print("Lista powinna zawierać dokładnie 5 imion")
@@ -11,10 +7,4 @@ def funcA(names):
         print(name)
 
 
-funcA(["Jacek","Agata","Marek","Krzysztof","Fiona"])
-
-
-
-
-
-
+funcA(["Jacek", "Agata", "Marek", "Krzysztof", "Fiona"])

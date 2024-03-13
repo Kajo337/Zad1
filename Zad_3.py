@@ -6,4 +6,5 @@ def funcC(numbers):
         if (int(numbers[i])) % 2 == 0:
             print(numbers[i])
 
+
 funcC(["2", "2", "3", "4", "8", "6", "7", "8", "9", "10"])

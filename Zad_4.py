@@ -2,7 +2,7 @@ def funcD(numbers):
     if len(numbers) != 10:
         print("Lista powinna zawierać dokładnie 10 liczb")
         return
-    for i in range(1,len(numbers),2):
+    for i in range(1, len(numbers), 2):
         print(numbers[i])
 
 
