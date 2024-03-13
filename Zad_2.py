@@ -8,7 +8,8 @@ class Library:
         self.phone = phone
 
     def __str__(self):
-        return f"Library: {self.city}, {self.street}, {self.zip_code}\nOpen Hours: {self.open_hours}\nPhone: {self.phone}\n"
+        return f"Library: {self.city}, {self.street}, {self.zip_code}\nOpen Hours: {self.open_hours}\n Phone: {self.phone}\n"
+
 
 class Employee:
     def __init__(self, first_name, last_name, hire_date, birth_date, city, street, zip_code, phone):
@@ -24,6 +25,7 @@ class Employee:
     def __str__(self):
         return f"Employee: {self.first_name} {self.last_name}\nHire Date: {self.hire_date}\nBirth Date: {self.birth_date}\nCity: {self.city}\nStreet: {self.street}\n"
 
+
 class Book:
     def __init__(self, library, publication_date, author_name, author_surname, number_of_pages):
         self.library = library
@@ -35,11 +37,12 @@ class Book:
     def __str__(self):
         return f"Book: {self.author_name} {self.author_surname}\nPublication Date: {self.publication_date}\nNumber of Pages: {self.number_of_pages}\nLibrary: {self.library}\n"
 
+
 class Order:
     def __init__(self, employee, student, books, order_date):
         self.employee = employee
         self.student = student
-        self.books  = books
+        self.books = books
         self.order_date = order_date
 
     def __str__(self):
