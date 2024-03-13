@@ -6,5 +6,4 @@ def func4(firstNumber: int, secondNumber: int, thirdNumber: int) -> bool:
         return 0
 
 
-
-print(func4(1,1,3))
+print(func4(1, 1, 3))

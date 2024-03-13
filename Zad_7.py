@@ -1,7 +1,10 @@
 import requests
 import argparse
+
+
 class Brewery:
-    def __init__(self,data):
+
+    def __init__(self, data):
         self.id = data.get('id')
         self.name = data.get('name')
         self.brewery_type = data.get('brewery_type')
@@ -33,8 +36,6 @@ def main(city=None):
     else:
         url = "https://api.openbrewerydb.org/v1/breweries?per_page=20"
 
-
-
     if city:
         response = requests.get(url, params=city)
     else:
@@ -45,10 +46,8 @@ def main(city=None):
 
         breweries_list.append(data_list)
 
-
     else:
         print("Nie udało się pobrać danych z API.")
-
     for brewery in breweries_list:
         for data in data_list:
             print(data)

@@ -5,5 +5,4 @@ def func6(l1: list, l2: list) -> list:
     return l4
 
 
-
-print(func6([1,2,3,4],[3,4,5,6]))
+print(func6([1, 2, 3, 4], [3, 4, 5, 6]))
