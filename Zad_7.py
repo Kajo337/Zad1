@@ -1,6 +1,6 @@
-import Libs.requestsLib as requests
-import Libs.argparseLib as argparse
-import Klasy.breweryClass as Brewery
+import requests
+import argparse
+import Klasy.breweryClass as br
 
 
 def main(city=None):
@@ -19,12 +19,13 @@ def main(city=None):
         response = requests.get(url)
     if response.status_code == 200:
         breweries_data = response.json()
-        data_list = [Brewery(data) for data in breweries_data]
+        data_list = [br.Brewery(data) for data in breweries_data]
 
         breweries_list.append(data_list)
 
     else:
         print("Nie udało się pobrać danych z API.")
+
     for brewery in breweries_list:
         for data in data_list:
             print(data)
