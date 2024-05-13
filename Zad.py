@@ -1,20 +1,14 @@
-import cv2
-import numpy as np
+from flask import Flask, render_template
+from flask_restful import Api, Resource
+from Klasy import Photo as pht
+from Klasy import PhotoURL as phtURL
+from Klasy import PhotoPOST as phtPOST
 
-hog = cv2.HOGDescriptor()
-hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+app = Flask(__name__)
+api = Api(app)
+api.add_resource(pht.Photo, '/photo')
+api.add_resource(phtURL.PhotoURL, '/photoURL/<path:url>')
+api.add_resource(phtPOST.PhotoPOST, '/photoPOST', methods=['POST'])
 
-img = cv2.imread('zdjecie.jpg')
-
-def get_count_of_people(img):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    boxes, weights = hog.detectMultiScale(gray, winStride=(10,10))
-    boxes = np.array([[x, y, x+w, y+h] for (x, y, w, h) in boxes])
-    return len(boxes)
-#for (xA, yA, xB, yB) in boxes:
- #   cv2.rectangle(img, (xA, yA), (xB, yB), (0, 255, 0), 2)
-
-#cv2.imshow('img', img)
-#cv2.imshow('gray', gray)
-#cv2.waitKey(0)
-print(get_count_of_people(img))
+if __name__ == "__main__":
+    app.run(debug=True)
